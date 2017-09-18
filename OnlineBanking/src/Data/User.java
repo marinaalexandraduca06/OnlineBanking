@@ -9,14 +9,14 @@ package data;
  *
  * @author Marina
  */
-public class client {
+public class User {
     private long CNP, bankAcunt;
     private String firstName, lastName, password;
     private int amountOfMoney;
     
-    public client(){}
+    public User(){}
     
-    public client( long id, long acount, String firstN, String lastN, String passw, int amount ){
+    public User( long id, long acount, String firstN, String lastN, String passw, int amount ){
         this.CNP = id;
         this.bankAcunt = acount;
         this.firstName = firstN;

@@ -3,7 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Marina/Desktop/OnlineBanking/src/GUI/mainWindow/mainWindow.java</file>
+            <file>file:/E:/PaoProiect/OnlineBanking/OnlineBanking/src/Server/UserThread.java</file>
+            <file>file:/E:/PaoProiect/OnlineBanking/OnlineBanking/src/GUI/mainWindow/mainWindow.java</file>
+            <file>file:/E:/PaoProiect/OnlineBanking/OnlineBanking/src/Data/User.java</file>
+            <file>file:/E:/PaoProiect/OnlineBanking/OnlineBanking/src/Server/MainServer.java</file>
+            <file>file:/E:/PaoProiect/OnlineBanking/OnlineBanking/src/Client/MainClient.java</file>
+            <file>file:/E:/PaoProiect/OnlineBanking/OnlineBanking/src/Client/Client.java</file>
+            <file>file:/E:/PaoProiect/OnlineBanking/OnlineBanking/src/Server/Server.java</file>
+            <file>file:/E:/PaoProiect/OnlineBanking/OnlineBanking/src/Data/transaction.java</file>
+            <file>file:/E:/PaoProiect/OnlineBanking/OnlineBanking/src/GUI/Panels/LogIn.java</file>
+            <file>file:/E:/PaoProiect/OnlineBanking/OnlineBanking/src/Client/MessageProcessor.java</file>
         </group>
     </open-files>
 </project-private>

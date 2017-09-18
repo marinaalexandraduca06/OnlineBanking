@@ -1,16 +1,17 @@
-package mainWindow;
+package GUI.mainWindow;
 
 
-import Panels.Bought;
-import Panels.BuyAVignette;
-import Panels.CardPayment;
-import Panels.CheckTransactions;
-import Panels.LogIn;
-import Panels.Options;
-import Panels.Payment;
-import Panels.RechargeAPhoneCard;
-import Panels.Recharged;
-import Panels.Transfer;
+import Client.Client;
+import GUI.Panels.Bought;
+import GUI.Panels.BuyAVignette;
+import GUI.Panels.CardPayment;
+import GUI.Panels.CheckTransactions;
+import GUI.Panels.LogIn;
+import GUI.Panels.Options;
+import GUI.Panels.Payment;
+import GUI.Panels.RechargeAPhoneCard;
+import GUI.Panels.Recharged;
+import GUI.Panels.Transfer;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import static sun.management.ConnectorAddressLink.export;
@@ -29,8 +30,9 @@ import static sun.management.ConnectorAddressLink.export;
 
 public class mainWindow extends javax.swing.JFrame {
 
+    public static Client client;
     GridBagLayout layout = new GridBagLayout();
-    LogIn p1;
+    static public LogIn p1;
     static Options p2;
     static CheckTransactions p3;
     static Payment p4;
@@ -57,6 +59,8 @@ public class mainWindow extends javax.swing.JFrame {
         p8 = new RechargeAPhoneCard();
         p9 = new Recharged();
         p10 = new Bought();
+        
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         mainPanel.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
@@ -149,6 +153,12 @@ public class mainWindow extends javax.swing.JFrame {
     public static void makep10Visible(){
         p10.setVisible(true);
     }
+    
+    public void start(Client client){
+        this.client = client;
+        new mainWindow().setVisible(true);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -222,37 +232,37 @@ public class mainWindow extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new mainWindow().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new mainWindow().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
