@@ -8,6 +8,7 @@ package GUI.Panels;
 import java.awt.Component;
 import GUI.mainWindow.mainWindow;
 import Client.Client;
+import java.awt.Color;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -108,10 +109,17 @@ public class LogIn extends javax.swing.JPanel {
     private void LogInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInButtonMouseClicked
 
         // TODO add your handling code here:
-        mainWindow.client.sendMessage("LogIn");
-        mainWindow.client.sendMessage(this.CNPField.getText());
-        char[] pass = this.PasswordField.getPassword();
-        mainWindow.client.sendMessage(Arrays.toString(pass));
+        if (CNPField.getText().length() > 0 && PasswordField.getPassword().length > 0) {
+            mainWindow.client.sendMessage("LogIn");
+            mainWindow.client.sendMessage(this.CNPField.getText());
+            char[] pass = this.PasswordField.getPassword();
+            mainWindow.client.sendMessage(Arrays.toString(pass));
+        } else {
+            if(CNPField.getText().length() < 1)
+                CNPField.setBackground(Color.red);
+            if(PasswordField.getPassword().length < 1)
+                PasswordField.setBackground(Color.red);
+        }
 
     }//GEN-LAST:event_LogInButtonMouseClicked
 

@@ -10,7 +10,7 @@ package data;
  * @author Marina
  */
 public class User {
-    private long CNP, bankAcunt;
+    private long CNP, bankAcccount;
     private String firstName, lastName, password;
     private int amountOfMoney;
     
@@ -18,10 +18,28 @@ public class User {
     
     public User( long id, long acount, String firstN, String lastN, String passw, int amount ){
         this.CNP = id;
-        this.bankAcunt = acount;
+        this.bankAcccount = acount;
         this.firstName = firstN;
         this.lastName = lastN;
         this.password = passw;
         this.amountOfMoney = amount;
     }
+    
+    public long getCNP(){
+        return this.CNP;
+    }
+    
+    public long getAccount(){
+        return this.bankAcccount;
+    }
+    
+    public String getName(){
+        return this.firstName+' '+this.lastName;
+    }
+    
+    public int getMoney(){
+        return this.amountOfMoney;
+    }
+    
+    
 }

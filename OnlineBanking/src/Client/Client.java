@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 
 import java.net.Socket;
 import GUI.mainWindow.mainWindow;
+import data.User;
 
 /**
  *
@@ -26,15 +27,17 @@ public class Client {
     private ObjectOutputStream output;
 
     private Object message;
-    
+
     private MessageProcessor processor;
+    
+    public User user;
 
     public Client(String IP, int port) {
 
         this.IP = IP;
 
         this.port = port;
-        
+
         this.processor = new MessageProcessor(this);
 
     }
@@ -94,7 +97,7 @@ public class Client {
                         if (message.equals("CloseApp")) {
                             break;
                         }
-                        
+
                         processor.process(message);
 
                     } catch (ClassNotFoundException e) {

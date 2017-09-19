@@ -1,5 +1,6 @@
 package Server;
 
+import data.User;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -23,6 +24,8 @@ public class UserThread implements Runnable {
     private Socket socket;
 
     private Server server;
+    
+    private User user;
 
     public UserThread(Socket socket, Server server) {
 
@@ -53,16 +56,30 @@ public class UserThread implements Runnable {
                 message = readMessage();
 
                 if (message.equals("LogIn")) {
-                    String correctPass ="dada";
-                    message = readMessage();
-                    if(correctPass.equals(message)){
+                    String correctPass = Arrays.toString("dada".toCharArray());
+                    Object userName = readMessage();
+                    Object pass = readMessage();
+                    if (correctPass.equals(pass)) {
                         sendMessage("ValidAccount");
-                    }else{
+                        user = new User();
+                    } else {
                         sendMessage("InvalidAccount");
                     }
                 }
                 
-                if(message.equals("CloseApp")){
+                if(message.equals("Transfer")){
+                    
+                }
+                
+                if(message.equals("ShowTransactions")){
+                    
+                }
+                
+                if(message.equals("CardPayment")){
+                    
+                }
+
+                if (message.equals("CloseApp")) {
                     sendMessage("CloseApp");
                     break;
                 }
