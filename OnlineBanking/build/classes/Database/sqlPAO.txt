@@ -1,0 +1,35 @@
+		
+	cautare user:
+
+SELECT COUNT(CNP)
+FROM Client
+WHERE CNP=cnp AND Password=pw;
+
+	afisare tranzactii:
+
+SELECT TransactionDate, Action, AmountOfMoney
+FROM Transaction
+WHERE ClientID=id;
+
+	adaugare tranzactie:
+INSERT INTO Transaction (TransactionID, ClientID, AmountOfMoney, Destination, TransactionDate, Action)
+VALUES ((SELECT COUNT(*) FROM Transaction)+1, cnp, sum, dest, DATE(), act);
+
+	afisare info utilizator:
+
+SELECT BankAcount, AmountOfMoney 
+FROM Client
+WHERE CNP=cnp;
+
+	depunere suma:
+
+UPDATE Client
+SET AmountOfMoney = AmountOfMoney - sum
+WHERE CNP=cnp;
+
+	plata:
+
+UPDATE Users
+SET AmountOfMoney = AmountOfMoney - sum
+WHERE CNP=cnp;
+
