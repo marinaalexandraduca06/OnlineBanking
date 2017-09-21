@@ -5,6 +5,7 @@
  */
 package GUI.Panels;
 
+import Client.MessageProcessor;
 import GUI.mainWindow.mainWindow;
 
 /**
@@ -19,7 +20,11 @@ public class Payment extends javax.swing.JPanel {
     public Payment() {
         initComponents();
     }
-
+    
+    public void setMoney() {
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

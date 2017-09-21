@@ -1,5 +1,6 @@
 package Server;
 
+import Database.Database;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -26,11 +27,15 @@ public class Server {
 
     private ExecutorService threadPool;
 
-    private UserThread teacherThread;
+    private UserThread userThread;
+    
+    private Database db;
 
     public Server() {
 
         try {
+            db = new Database();
+            
             threadPool = Executors.newCachedThreadPool();
 
             serverSocket = new ServerSocket(portNumber);
@@ -53,9 +58,9 @@ public class Server {
 
                 clientSocket = serverSocket.accept();
 
-                teacherThread = new UserThread(clientSocket, this);
+                userThread = new UserThread(clientSocket, this, db);
 
-                threadPool.execute(teacherThread);
+                threadPool.execute(userThread);
 
                 System.out.println("A client has connected");
 

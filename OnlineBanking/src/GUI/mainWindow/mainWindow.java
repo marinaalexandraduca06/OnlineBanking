@@ -14,6 +14,7 @@ import GUI.Panels.Recharged;
 import GUI.Panels.Transfer;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import static java.lang.System.exit;
 import static sun.management.ConnectorAddressLink.export;
 
 
@@ -33,15 +34,15 @@ public class mainWindow extends javax.swing.JFrame {
     public static Client client;
     GridBagLayout layout = new GridBagLayout();
     static public LogIn p1;
-    static Options p2;
-    static CheckTransactions p3;
-    static Payment p4;
-    static CardPayment p5;
-    static BuyAVignette p6;
-    static Transfer p7;
-    static RechargeAPhoneCard p8;
-    static Recharged p9;
-    static Bought p10;
+    static public Options p2;
+    static public CheckTransactions p3;
+    static public Payment p4;
+    static public CardPayment p5;
+    static public BuyAVignette p6;
+    static public Transfer p7;
+    static public RechargeAPhoneCard p8;
+    static public Recharged p9;
+    static public Bought p10;
     
     
     /**
@@ -60,7 +61,7 @@ public class mainWindow extends javax.swing.JFrame {
         p9 = new Recharged();
         p10 = new Bought();
         
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         
         mainPanel.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
@@ -184,6 +185,11 @@ public class mainWindow extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("x");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -236,6 +242,12 @@ public class mainWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        client.sendMessage("CloseApp");
+        exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

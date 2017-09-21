@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 import java.net.Socket;
 import GUI.mainWindow.mainWindow;
-import data.User;
+import Data.User;
 
 /**
  *
@@ -28,9 +28,9 @@ public class Client {
 
     private Object message;
 
-    private MessageProcessor processor;
+    private final MessageProcessor processor;
     
-    public User user;
+    public static User user;
 
     public Client(String IP, int port) {
 

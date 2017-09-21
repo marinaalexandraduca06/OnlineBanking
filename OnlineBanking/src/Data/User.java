@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package Data;
 
 /**
  *
  * @author Marina
  */
 public class User {
-    private long CNP, bankAcccount;
+    private String CNP, bankAcccount;
     private String firstName, lastName, password;
     private int amountOfMoney;
     
     public User(){}
     
-    public User( long id, long acount, String firstN, String lastN, String passw, int amount ){
+    public User( String id, String acount, String firstN, String lastN, String passw, int amount ){
         this.CNP = id;
         this.bankAcccount = acount;
         this.firstName = firstN;
@@ -25,11 +25,11 @@ public class User {
         this.amountOfMoney = amount;
     }
     
-    public long getCNP(){
+    public String getCNP(){
         return this.CNP;
     }
     
-    public long getAccount(){
+    public String getAccount(){
         return this.bankAcccount;
     }
     
@@ -39,6 +39,26 @@ public class User {
     
     public int getMoney(){
         return this.amountOfMoney;
+    }
+    
+    public void setCNP(String cnp){
+        this.CNP = cnp;
+    }
+    
+    public void setBankAccount(String bankAccount){
+        this.bankAcccount = bankAccount;
+    }
+    
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
+    }
+    
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+    
+    public void setMoney(int money){
+        this.amountOfMoney = money;
     }
     
     

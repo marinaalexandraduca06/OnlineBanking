@@ -1,11 +1,13 @@
 package Server;
 
-import data.User;
+import Database.Database;
+import Data.User;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Array;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -24,14 +26,18 @@ public class UserThread implements Runnable {
     private Socket socket;
 
     private Server server;
-    
+
     private User user;
 
-    public UserThread(Socket socket, Server server) {
+    private Database db;
+
+    public UserThread(Socket socket, Server server, Database db) {
 
         this.socket = socket;
 
         this.server = server;
+
+        this.db = db;
 
     }
 
@@ -56,27 +62,27 @@ public class UserThread implements Runnable {
                 message = readMessage();
 
                 if (message.equals("LogIn")) {
-                    String correctPass = Arrays.toString("dada".toCharArray());
-                    Object userName = readMessage();
-                    Object pass = readMessage();
-                    if (correctPass.equals(pass)) {
+                    String cnp = (String) readMessage();
+                    String pass = (String) readMessage();
+                    if (db.checkAccount(cnp, pass, 0)) {
                         sendMessage("ValidAccount");
-                        user = new User();
+                        sendMessage(db.getAccount(cnp));
                     } else {
                         sendMessage("InvalidAccount");
                     }
-                }
-                
-                if(message.equals("Transfer")){
                     
                 }
-                
-                if(message.equals("ShowTransactions")){
-                    
+
+                if (message.equals("Transfer")) {
+
                 }
-                
-                if(message.equals("CardPayment")){
-                    
+
+                if (message.equals("ShowTransactions")) {
+
+                }
+
+                if (message.equals("CardPayment")) {
+
                 }
 
                 if (message.equals("CloseApp")) {
@@ -88,8 +94,11 @@ public class UserThread implements Runnable {
             e.printStackTrace();
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
 
+        close();
     }
 
     public Object readMessage() throws IOException, ClassNotFoundException {
@@ -109,6 +118,24 @@ public class UserThread implements Runnable {
         } catch (IOException e) {
 
             e.printStackTrace();
+
+        }
+
+    }
+
+    public void close() {
+
+        try {
+
+            input.close();
+
+            output.close();
+
+            socket.close();
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
 
         }
 
